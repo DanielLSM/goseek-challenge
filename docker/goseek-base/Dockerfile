@@ -19,12 +19,12 @@ RUN apt-get update && \
     apt-get install -y git curl && \
     apt-get clean
 
-RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
-     chmod +x ~/miniconda.sh && \
-     ~/miniconda.sh -b -p /opt/conda && \
-     rm ~/miniconda.sh && \
-     /opt/conda/bin/conda clean -ya && \
-     /opt/conda/bin/conda create -y -n python37 python=3.7 numpy pip scipy pyyaml pillow
+RUN curl -L -o ~/miniconda.sh -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
+    chmod +x ~/miniconda.sh && \
+    ~/miniconda.sh -b -p /opt/conda && \
+    rm ~/miniconda.sh && \
+    /opt/conda/bin/conda clean -ya && \
+    /opt/conda/bin/conda create -y -n python37 python=3.7 numpy pip scipy pyyaml pillow
 
 RUN /opt/conda/bin/conda update -y -n base -c defaults conda
 
